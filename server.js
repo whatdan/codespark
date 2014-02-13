@@ -1,7 +1,14 @@
-var http = require('http');
-var port = 18080;
-http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<h1>Node.js</h1>');
-    res.end('<p>Hello World</p>');
-}).listen(port);
+var express = require('express');
+var path = require('path');
+var app = express();
+	app.configure(function(){
+		app.set('views', __dirname + '/views');
+		app.use(express.static(path.join(__dirname, '/public')));
+	});
+
+
+app.get('/', function(req, res){
+  res.render('../views/index.jade');
+});
+
+app.listen(3000);
