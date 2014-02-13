@@ -11,4 +11,4 @@ app.get('/', function(req, res){
   res.render('../views/index.jade');
 });
 
-app.listen(3000);
+app.listen(80);
