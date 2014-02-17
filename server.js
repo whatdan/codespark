@@ -32,6 +32,7 @@ var app = express();
 	app.get('/',routes.index);
 	app.get('/upload',routes.upload);
 	app.post('/file_upload',routes.file_upload);
+	app.get('/code',routes.code);
 	
 
 	app.listen(18080);
