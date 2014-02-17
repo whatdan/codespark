@@ -6,13 +6,13 @@ var app = express();
 	// Configurations
 	app.configure(function(){
 	  app.locals.pretty = true;
-	  app.set('port', process.env.PORT || 3000);
+	  app.set('port', process.env.PORT || 18080);
 	  app.set('views', __dirname + '/views');
 	  app.use(express.static(path.join(__dirname, '/public')));
 	  app.set('view engine', 'jade');
 	  app.use(express.favicon());
 	  app.use(express.logger('dev'));
-	  app.use(express.bodyParser());
+	  app.use(express.bodyParser({uploadDir:'./uploads'}));
 	  app.use(express.methodOverride());
 	  app.use(express.cookieParser('secret'));
 	  app.use(express.session());
@@ -29,8 +29,9 @@ var app = express();
 	});
 
 	//router
-
 	app.get('/',routes.index);
 	app.get('/upload',routes.upload);
+	app.post('/file_upload',routes.file_upload);
+	
 
 	app.listen(18080);

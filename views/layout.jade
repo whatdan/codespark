@@ -9,6 +9,7 @@ html(lang="en")
     title="CodeSpark"
     link(href="css/bootstrap.min.css",rel="stylesheet")
     link(href="css/jumbotron.css",rel="stylesheet")
+    link(href="css/extra.css",rel="stylesheet")
   body
     .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
       .container
@@ -30,3 +31,13 @@ html(lang="en")
             button.btn.btn-success(type='submit') Sign in
         // /.navbar-collapse
     block content
+
+
+      // /container
+      //
+         Bootstrap core JavaScript
+            ================================================== 
+      // Placed at the end of the document so the pages load faster
+      script(src='js/jquery-1.10.2.min.js')
+      script(src='js/bootstrap.min.js')
+      script(src='js/index.js')
