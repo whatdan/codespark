@@ -1,4 +1,7 @@
 fs = require 'fs';
+encryption = require '../lib/encryption.js'
+db = require '../db/db.js';
+
 exports.index = (req,res) ->
 	res.render 'index';
 exports.upload = (req,res) ->
@@ -11,7 +14,18 @@ exports.file_upload = (req,res)->
 	res.write files.file.name;
 	res.end();
 	return;
+exports.code = (req,res) ->
+	res.render("code");
+
 exports.login = (req,res) ->
-	username = res.username;
-	password = res.password;
+	res.render("login");
+exports.register = (req,res) ->
+	res.render("register");
+
+exports.doregister = (req,res) ->
+
+	db.insert(req.param('email'),encryption.md5(req.param('password')));
+	res.writeHead 200,{'Content-Type':'text/plain'}
+	res.write "ok";
+	res.end();
 	return;
