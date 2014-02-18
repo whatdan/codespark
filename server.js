@@ -45,4 +45,8 @@ app.get('/login', routes.login);
 
 app.get('/logout', routes.logout);
 
+app.get('/register', routes.register);
+
+app.post('/doregister', routes.doregister);
+
 app.listen(18080);

@@ -33,4 +33,6 @@ app.post '/file_upload',routes.file_upload;
 app.get '/code',routes.code;
 app.get '/login',routes.login;
 app.get '/logout',routes.logout;
+app.get '/register',routes.register;
+app.post '/doregister',routes.doregister;
 app.listen 18080;
