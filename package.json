@@ -10,7 +10,8 @@
 	    "express": "3.0.0",
 	    "jade": "1.1.5",
       "coffee-script":"1.7.1",
-      "underscore":"1.6.0"
+      "underscore":"1.6.0",
+      "mongodb":"*"
    },
       "devDependencies": {
       "underscore":"1.6.0"
