@@ -1,0 +1,25 @@
+extends layout
+block prepend content
+	div(class="full-width")
+		div(class="col-md-4")
+		div(class="col-md-4")
+			h2 用户登录
+			hr
+			form.form-horizontal(role='form')
+				.form-group
+					label.col-sm-2.control-label(for='inputEmail3') Email
+					.col-sm-10
+						input#inputEmail3.form-control(type='email', placeholder='Email')
+				.form-group
+					label.col-sm-2.control-label(for='inputPassword3') Password
+					.col-sm-10
+						input#inputPassword3.form-control(type='password', placeholder='Password')
+				.form-group
+					.col-sm-offset-2.col-sm-10
+						input.btn.btn-success(type='submit',value="登录")
+						input.btn.btn-danger(type='reset',value="取消")
+						a.col-sm-offset-2(href="/register")
+							|还没有账号,点此注册.
+
+
+	
