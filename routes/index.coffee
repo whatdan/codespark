@@ -29,3 +29,5 @@ exports.doregister = (req,res) ->
 	res.write "ok";
 	res.end();
 	return;
+exports.dologin = (req,res) ->
+	;
