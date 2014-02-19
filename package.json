@@ -14,7 +14,9 @@
       "mongodb":"*"
    },
       "devDependencies": {
-      "underscore":"1.6.0"
+      "grunt": "~0.4.2",
+      "grunt-contrib-coffee":"0.10.1",
+      "grunt-contrib-watch":"0.5.3"
    }
 }
 

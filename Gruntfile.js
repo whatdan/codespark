@@ -3,55 +3,38 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      bulidJs:{
-        files: [
-          {
-            expand: true,     // Enable dynamic expansion.
-            cwd: 'js/',      // Src matches are relative to this path.
-            src: ['**/*.js'], // Actual pattern(s) to match.
-            dest: 'js/bulid',   // Destination path prefix.
-            ext: '.min.js',   // Dest filepaths will have this extension.
-          },
-        ],
-      },
+    coffee: { 
+      compile: {
+          files: [
+            {
+              expand: true,     // Enable dynamic expansion.
+              cwd: './',      // Src matches are relative to this path.
+              src: ['**/*.coffee'], // Actual pattern(s) to match.
+               dest: '',   // Destination path prefix.
+               ext: '.js',   // Dest filepaths will have this extension.
+            },
+          ],
+      }
     },
-    cssmin: {
-      bulidCss:{
-        files: [
-          {
-            expand: true,     // Enable dynamic expansion.
-            cwd: 'css/',      // Src matches are relative to this path.
-            src: ['**/*.css'], // Actual pattern(s) to match.
-            dest: 'css/bulid',   // Destination path prefix.
-            ext: '.min.css',   // Dest filepaths will have this extension.
-          },
-        ],
+    watch: {
+      scripts: {
+        files: ['**/*.coffee'],
+        tasks: ['coffee'],
+        options: {
+          spawn: false,
+        },
       },
-    },
-    imagemin: {
-      bulidImg:{
-        files: [
-          {
-            expand: true,     // Enable dynamic expansion.
-            cwd: 'images/',      // Src matches are relative to this path.
-            src: ['**/*.{png,gif,jpg}'], // Actual pattern(s) to match.
-            dest: 'images/bulid',   // Destination path prefix.
-          },
-        ],
-      },
-    },
-
+    }
   });
 
-
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  // Load the plugin that provides the task.
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
 
   // Default task(s).
   //grunt.registerTask('default', ['uglify','imagemin']);
-grunt.registerTask('default', ['cssmin:bulidCss','uglify:bulidJs']);
+grunt.registerTask('default', ['coffee:compile']);
+grunt.registerTask('watchfile', ['watch']);
 
 };
