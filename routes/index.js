@@ -12,7 +12,11 @@
   };
 
   exports.upload = function(req, res) {
-    return res.render("upload");
+    if (req.session.email) {
+      return res.render("upload");
+    } else {
+      return res.render("login");
+    }
   };
 
   exports.file_upload = function(req, res) {
@@ -31,11 +35,11 @@
   };
 
   exports.login = function(req, res) {
-    return res.render("login");
+    res.render("login");
   };
 
   exports.register = function(req, res) {
-    return res.render("register");
+    res.render("register");
   };
 
   exports.doregister = function(req, res) {
@@ -47,6 +51,20 @@
     res.end();
   };
 
-  exports.dologin = function(req, res) {};
+  exports.dologin = function(req, res) {
+    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb) {
+      var status;
+      status = cb;
+      console.log("dologin" + status);
+      if (status) {
+        req.session.email = req.param('email');
+        return res.render("upload");
+      }
+    });
+  };
+
+  exports.logout = function(req, res) {
+    return req.session = null;
+  };
 
 }).call(this);
