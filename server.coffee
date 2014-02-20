@@ -16,7 +16,7 @@ app.configure ->
 	app.use express.bodyParser({uploadDir:'./uploads'});
 	app.use express.methodOverride();
 	app.use express.cookieParser('secret');
-	app.use express.session();
+	app.use express.cookieSession();
 	app.use (req,res,next) ->
 		res.locals.session = req.session;
 		next();
@@ -35,4 +35,5 @@ app.get '/login',routes.login;
 app.get '/logout',routes.logout;
 app.get '/register',routes.register;
 app.post '/doregister',routes.doregister;
+app.post '/dologin',routes.dologin;
 app.listen 18080;
