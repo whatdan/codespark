@@ -1,8 +1,7 @@
-mongodb = require 'mongodb'
-MongoClient = mongodb.MongoClient
+mongoClient = require("./mongoClient.js").mongoClient;
 
 exports.insert = (email,ps) -> 
-	MongoClient.connect 'mongodb://localhost:27017/codespark', (err,db)->
+	mongoClient (err,db)->
 		throw err if err
 		db.collection('kids').insert 
 			"email":email
@@ -14,13 +13,12 @@ exports.insert = (email,ps) ->
 	return;
 
 exports.verifyLogin = (email,ps,callback) ->
-	MongoClient.connect 'mongodb://localhost:27017/codespark', (err,db)->
+	mongoClient (err,db)->
 		throw err if err
 		db.collection('kids').findOne
 			"email":email
 			(err,result) ->
-				console.log result.email == email and ps == result.password;
-				callback result.email == email and ps == result.password;
+				callback result.email == email and ps == result.password,result._id.toString();
 				db.close();
 				return;
 		return;

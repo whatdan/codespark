@@ -1,12 +1,10 @@
 (function() {
-  var MongoClient, mongodb;
+  var mongoClient;
 
-  mongodb = require('mongodb');
-
-  MongoClient = mongodb.MongoClient;
+  mongoClient = require("./mongoClient.js").mongoClient;
 
   exports.insert = function(email, ps) {
-    MongoClient.connect('mongodb://localhost:27017/codespark', function(err, db) {
+    mongoClient(function(err, db) {
       if (err) {
         throw err;
       }
@@ -20,15 +18,14 @@
   };
 
   exports.verifyLogin = function(email, ps, callback) {
-    MongoClient.connect('mongodb://localhost:27017/codespark', function(err, db) {
+    mongoClient(function(err, db) {
       if (err) {
         throw err;
       }
       db.collection('kids').findOne({
         "email": email
       }, function(err, result) {
-        console.log(result.email === email && ps === result.password);
-        callback(result.email === email && ps === result.password);
+        callback(result.email === email && ps === result.password, result._id.toString());
         db.close();
       });
     });
