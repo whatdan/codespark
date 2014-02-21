@@ -18,7 +18,7 @@
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.bodyParser({
-      uploadDir: './uploads'
+      uploadDir: './uploads/'
     }));
     app.use(express.methodOverride());
     app.use(express.cookieParser('secret'));

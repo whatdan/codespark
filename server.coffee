@@ -13,7 +13,7 @@ app.configure ->
 	app.set 'view engine','jade';
 	app.use express.favicon();
 	app.use express.logger('dev');
-	app.use express.bodyParser({uploadDir:'./uploads'});
+	app.use express.bodyParser({uploadDir:'./uploads/'});
 	app.use express.methodOverride();
 	app.use express.cookieParser('secret');
 	app.use express.cookieSession();
