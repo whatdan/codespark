@@ -22,15 +22,10 @@
   exports.file_upload = function(req, res) {
     var files;
     files = req.files;
-    console.log(req.session.user_id);
-    fs.mkdir("uploads\\" + req.session.user_id, function() {
-      fs.rename(files.file.path, 'uploads\\' + req.session.user_id + '\\' + files.file.name, function() {});
+    fs.mkdir("uploads\\" + req.session.id, function() {
+      fs.rename(files.file.path, 'uploads\\' + req.session.id + '\\' + files.file.name, function() {});
     });
-    res.writeHead(200, {
-      'Content-Type': 'text/plain'
-    });
-    res.write(files.file.name);
-    res.end();
+    res.redirect('/code');
   };
 
   exports.code = function(req, res) {
@@ -46,27 +41,29 @@
   };
 
   exports.doregister = function(req, res) {
-    db.insert(req.param('email'), encryption.md5(req.param('password')));
-    res.writeHead(200, {
-      'Content-Type': 'text/plain'
+    db.insert({
+      email: req.param('email'),
+      nickname: req.param('nickname'),
+      password: encryption.md5(req.param('password'))
     });
-    res.write("ok");
-    res.end();
+    res.redirect('/upload');
   };
 
   exports.dologin = function(req, res) {
-    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb, user_id) {
+    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb, user_id, nickname) {
       var status;
       status = cb;
       if (status) {
         req.session.user_id = user_id;
-        return res.render("upload");
+        req.session.nickname = nickname;
+        return res.redirect('/upload');
       }
     });
   };
 
   exports.logout = function(req, res) {
-    return req.session = null;
+    req.session = null;
+    return res.redirect("/");
   };
 
 }).call(this);
