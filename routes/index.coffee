@@ -11,8 +11,11 @@ exports.upload = (req,res) ->
 		res.render "login" ;
 exports.file_upload = (req,res)->
 	files = req.files;
-	fs.rename files.file.path,'uploads\\'+files.file.name,->
-		;
+	console.log req.session.user_id;
+	fs.mkdir "uploads\\"+req.session.user_id, ->
+		fs.rename files.file.path,'uploads\\'+req.session.user_id+'\\'+files.file.name,->
+			;
+		return;
 	res.writeHead 200,{'Content-Type':'text/plain'}
 	res.write files.file.name;
 	res.end();
@@ -34,11 +37,10 @@ exports.doregister = (req,res) ->
 	res.end();
 	return;
 exports.dologin = (req,res) ->
-	db.verifyLogin req.param('email'),encryption.md5(req.param('password')),(cb)->
+	db.verifyLogin req.param('email'),encryption.md5(req.param('password')),(cb,user_id)->
 		status = cb;
-		console.log "dologin"+status;
 		if status
-			req.session.email = req.param('email');
+			req.session.user_id = user_id;
 			res.render "upload";
 	return;
 exports.logout = (req,res) ->

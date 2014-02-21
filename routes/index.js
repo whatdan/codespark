@@ -22,7 +22,10 @@
   exports.file_upload = function(req, res) {
     var files;
     files = req.files;
-    fs.rename(files.file.path, 'uploads\\' + files.file.name, function() {});
+    console.log(req.session.user_id);
+    fs.mkdir("uploads\\" + req.session.user_id, function() {
+      fs.rename(files.file.path, 'uploads\\' + req.session.user_id + '\\' + files.file.name, function() {});
+    });
     res.writeHead(200, {
       'Content-Type': 'text/plain'
     });
@@ -52,12 +55,11 @@
   };
 
   exports.dologin = function(req, res) {
-    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb) {
+    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb, user_id) {
       var status;
       status = cb;
-      console.log("dologin" + status);
       if (status) {
-        req.session.email = req.param('email');
+        req.session.user_id = user_id;
         return res.render("upload");
       }
     });
