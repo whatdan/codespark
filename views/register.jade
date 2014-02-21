@@ -7,17 +7,17 @@ block prepend content
 			hr
 			form.form-horizontal(role='form',name="regform",method="post",enctype="multipart/form-data",action="/doregister")
 				.form-group
-					label.col-sm-2.control-label(for='inputEmail3') Email
+					label.col-sm-2.control-label(for='inputEmail3') 昵称
+					.col-sm-10
+						input#inputEmail3.form-control(type='text',name="nickname" placeholder='nickName')
+				.form-group
+					label.col-sm-2.control-label(for='inputEmail3') 邮箱
 					.col-sm-10
 						input#inputEmail3.form-control(type='email',name="email" placeholder='Email')
 				.form-group
-					label.col-sm-2.control-label(for='inputPassword3') Password
+					label.col-sm-2.control-label(for='inputPassword3') 密码
 					.col-sm-10
 						input#inputPassword3.form-control(type='password',name="password",placeholder='Password')
-				.form-group
-					label.col-sm-2.control-label(for='inputPassword3') re-Password
-					.col-sm-10
-						input#inputPassword3.form-control(type='password',name="re-Password",placeholder='re-Password')
 				.form-group
 					.col-sm-offset-2.col-sm-10
 						input.btn.btn-success(type='submit',value="注册")
