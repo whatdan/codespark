@@ -12,10 +12,10 @@
   };
 
   exports.upload = function(req, res) {
-    if (req.session.email) {
-      return res.render("upload");
+    if (req.session.nickname) {
+      return res.render('upload');
     } else {
-      return res.render("login");
+      return res.redirect('/login');
     }
   };
 
@@ -29,7 +29,9 @@
   };
 
   exports.code = function(req, res) {
-    return res.render("code");
+    res.render("code", {
+      file: '../uploads/domReady.js'
+    });
   };
 
   exports.login = function(req, res) {

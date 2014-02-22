@@ -5,10 +5,10 @@ db = require '../db/db.js';
 exports.index = (req,res) ->
 	res.render 'index';
 exports.upload = (req,res) ->
-	if req.session.email
-		res.render "upload" ;
+	if req.session.nickname
+		res.render 'upload'
 	else
-		res.render "login" ;
+		res.redirect '/login' 
 exports.file_upload = (req,res)->
 	files = req.files;
 	fs.mkdir "uploads\\"+req.session.id, ->
@@ -18,7 +18,9 @@ exports.file_upload = (req,res)->
 	res.redirect('/code')
 	return;
 exports.code = (req,res) ->
-	res.render "code" ;
+	res.render "code",
+		file : '../uploads/domReady.js'
+	return;
 
 exports.login = (req,res) ->
 	res.render "login";
