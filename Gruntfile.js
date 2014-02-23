@@ -20,9 +20,6 @@ module.exports = function(grunt) {
       scripts: {
         files: ['**/*.coffee'],
         tasks: ['coffee'],
-        options: {
-          
-        },
       },
     }
   });
