@@ -30,7 +30,7 @@
 
   exports.code = function(req, res) {
     res.render("code", {
-      file: '../uploads/domReady.js'
+      file: '../uploads/' + req.params.username + '/' + req.params.code
     });
   };
 
