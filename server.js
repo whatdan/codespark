@@ -39,7 +39,7 @@
 
   app.post('/file_upload', routes.file_upload);
 
-  app.get('/code', routes.code);
+  app.get('/code/:username/:code', routes.code);
 
   app.get('/login', routes.login);
 
