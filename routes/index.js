@@ -30,8 +30,10 @@
   };
 
   exports.code = function(req, res) {
+    var file_tmp;
+    file_tmp = '../uploads/' + req.params.user_id + '/' + req.params.code;
     res.render("code", {
-      file: '../uploads/' + req.params.username + '/' + req.params.code
+      file_tmp: file_tmp
     });
   };
 

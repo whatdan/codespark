@@ -24,8 +24,9 @@ exports.file_upload = (req,res)->
 
 #读代码相关
 exports.code = (req,res) ->
+	file_tmp = '../uploads/'+req.params.user_id+'/'+req.params.code;
 	res.render "code",
-		file : '../uploads/'+req.params.username+'/'+req.params.code
+		file_tmp : file_tmp
 	return;
 
 #注册相关
