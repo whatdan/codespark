@@ -12,7 +12,7 @@
   };
 
   exports.upload = function(req, res) {
-    if (req.session.nickname) {
+    if (req.session.username) {
       return res.render('upload');
     } else {
       return res.redirect('/login');
@@ -34,10 +34,6 @@
     });
   };
 
-  exports.login = function(req, res) {
-    res.render("login");
-  };
-
   exports.register = function(req, res) {
     res.render("register");
   };
@@ -45,10 +41,14 @@
   exports.doregister = function(req, res) {
     db.insert({
       email: req.param('email'),
-      nickname: req.param('nickname'),
+      nickname: req.param('username'),
       password: encryption.md5(req.param('password'))
     });
     res.redirect('/upload');
+  };
+
+  exports.login = function(req, res) {
+    res.render("login");
   };
 
   exports.dologin = function(req, res) {
@@ -57,7 +57,7 @@
       status = cb;
       if (status) {
         req.session.user_id = user_id;
-        req.session.nickname = nickname;
+        req.session.username = nickname;
         return res.redirect('/upload');
       }
     });
@@ -67,5 +67,23 @@
     req.session = null;
     return res.redirect("/");
   };
+
+  exports.myIndex = function(req, res) {
+    return res.render("myindex");
+  };
+
+  exports.codeku = function(req, res) {
+    return res.render("codeku");
+  };
+
+  exports.list = function(req, res) {
+    return res.render("list");
+  };
+
+  exports.discuss = function(req, res) {};
+
+  exports.review = function(req, res) {};
+
+  exports.rule = function(req, res) {};
 
 }).call(this);
