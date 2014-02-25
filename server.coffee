@@ -1,6 +1,7 @@
 express = require "express";
 path = require "path";
 routes = require "./routes";
+auth = require './lib/auth.js'
 app = express();
 
 #configures
@@ -28,8 +29,8 @@ app.configure 'development',->
 	return;
 
 app.get '/',routes.index;
-app.get '/upload',routes.upload;
-app.post '/file_upload',routes.file_upload;
+app.get '/upload',auth.authorize,routes.upload;
+app.post '/file_upload',auth.authorize,routes.file_upload;
 app.get '/code/:username/:code',routes.code;
 app.get '/login',routes.login;
 app.get '/logout',routes.logout;

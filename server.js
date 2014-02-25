@@ -1,11 +1,13 @@
 (function() {
-  var app, express, path, routes;
+  var app, auth, express, path, routes;
 
   express = require("express");
 
   path = require("path");
 
   routes = require("./routes");
+
+  auth = require('./lib/auth.js');
 
   app = express();
 
@@ -35,9 +37,9 @@
 
   app.get('/', routes.index);
 
-  app.get('/upload', routes.upload);
+  app.get('/upload', auth.authorize, routes.upload);
 
-  app.post('/file_upload', routes.file_upload);
+  app.post('/file_upload', auth.authorize, routes.file_upload);
 
   app.get('/code/:username/:code', routes.code);
 
