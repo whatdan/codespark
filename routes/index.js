@@ -22,10 +22,11 @@
   exports.file_upload = function(req, res) {
     var files;
     files = req.files;
-    fs.mkdir("uploads\\" + req.session.id, function() {
-      fs.rename(files.file.path, 'uploads\\' + req.session.id + '\\' + files.file.name, function() {});
+    fs.mkdir("uploads\\" + req.session.user_id, function() {
+      fs.rename(files.file.path, 'uploads\\' + req.session.user_id + '\\' + files.file.name, function() {
+        return res.redirect('/upload');
+      });
     });
-    res.redirect('/code');
   };
 
   exports.code = function(req, res) {

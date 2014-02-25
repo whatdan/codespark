@@ -15,11 +15,11 @@ exports.upload = (req,res) ->
 
 exports.file_upload = (req,res)->
 	files = req.files;
-	fs.mkdir "uploads\\"+req.session.id, ->
-		fs.rename files.file.path,'uploads\\'+req.session.id+'\\'+files.file.name,->
+	fs.mkdir "uploads\\"+req.session.user_id, ->
+		fs.rename files.file.path,'uploads\\'+req.session.user_id+'\\'+files.file.name,->
+			res.redirect('/upload');
 			;
 		return;
-	res.redirect('/code')
 	return;
 
 #读代码相关
