@@ -30,10 +30,13 @@
   };
 
   exports.code = function(req, res) {
-    var file_tmp;
-    file_tmp = '../uploads/' + req.params.user_id + '/' + req.params.code;
-    res.render("code", {
-      file_tmp: file_tmp
+    fs.readFile('uploads\\' + req.session.user_id + "\\" + req.params.code, "utf8", function(err, data) {
+      if (err) {
+        throw err;
+      }
+      res.render("code", {
+        content: data
+      });
     });
   };
 

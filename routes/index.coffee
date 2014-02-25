@@ -24,9 +24,11 @@ exports.file_upload = (req,res)->
 
 #读代码相关
 exports.code = (req,res) ->
-	file_tmp = '../uploads/'+req.params.user_id+'/'+req.params.code;
-	res.render "code",
-		file_tmp : file_tmp
+	fs.readFile 'uploads\\'+req.session.user_id+"\\"+req.params.code,"utf8",(err, data)->
+		throw err if err;
+		res.render "code",
+		content : data
+		return;
 	return;
 
 #注册相关
