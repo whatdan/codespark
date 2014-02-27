@@ -22,8 +22,21 @@
       db.collection('kids').findOne({
         "email": email
       }, function(err, result) {
-        console.log(result.nickname);
-        callback(result.email === email && ps === result.password, result._id.toString(), result.nickname);
+        callback(result.email === email && ps === result.password, result._id.toString(), result.username);
+        db.close();
+      });
+    });
+  };
+
+  exports.getUserId = function(username, cb) {
+    mongoClient(function(err, db) {
+      if (err) {
+        throw err;
+      }
+      db.collection("kids").findOne({
+        'username': username
+      }, function(err, result) {
+        cb(result._id.toString());
         db.close();
       });
     });
