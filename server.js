@@ -57,6 +57,8 @@
 
   app.get('/write', routes.write);
 
+  app.get('/place', routes.place);
+
   app.listen(18080);
 
 }).call(this);
