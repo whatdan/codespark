@@ -53,6 +53,10 @@
 
   app.post('/dologin', routes.dologin);
 
+  app.get('/i', routes.i);
+
+  app.get('/write', routes.write);
+
   app.listen(18080);
 
 }).call(this);

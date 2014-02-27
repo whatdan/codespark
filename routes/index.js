@@ -78,8 +78,12 @@
     return res.redirect("/");
   };
 
-  exports.myIndex = function(req, res) {
-    return res.render("myindex");
+  exports.i = function(req, res) {
+    return res.render("i");
+  };
+
+  exports.write = function(req, res) {
+    return res.render("write");
   };
 
   exports.codeku = function(req, res) {

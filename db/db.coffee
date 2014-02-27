@@ -28,5 +28,4 @@ exports.getUserId = (username,cb)->
 				return;
 		return;
 	return;
-	;
 

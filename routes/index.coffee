@@ -63,8 +63,10 @@ exports.logout = (req,res) ->
 		res.redirect("/");
 
 #个人页面相关
-exports.myIndex = (req,res) ->
-	res.render("myindex");
+exports.i = (req,res) ->
+	res.render("i");
+exports.write = (req,res) ->
+	res.render("write");
 
 #代码市场
 exports.codeku = (req,res) ->

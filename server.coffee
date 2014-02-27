@@ -37,6 +37,8 @@ app.get '/logout',routes.logout;
 app.get '/register',routes.register;
 app.post '/doregister',routes.doregister;
 app.post '/dologin',routes.dologin;
+app.get '/i',routes.i;
+app.get '/write',routes.write;
 
 
 
