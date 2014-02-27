@@ -30,12 +30,16 @@
   };
 
   exports.code = function(req, res) {
-    fs.readFile('uploads\\' + req.session.user_id + "\\" + req.params.code, "utf8", function(err, data) {
-      if (err) {
-        throw err;
-      }
-      res.render("code", {
-        content: data
+    return db.getUserId(req.params.username, function(cb) {
+      var uuid;
+      uuid = cb;
+      fs.readFile('uploads\\' + uuid + "\\" + req.params.code, "utf8", function(err, data) {
+        if (err) {
+          throw err;
+        }
+        res.render("code", {
+          content: data
+        });
       });
     });
   };
@@ -47,7 +51,7 @@
   exports.doregister = function(req, res) {
     db.insert({
       email: req.param('email'),
-      nickname: req.param('username'),
+      username: req.param('username'),
       password: encryption.md5(req.param('password'))
     });
     res.redirect('/upload');
@@ -58,12 +62,12 @@
   };
 
   exports.dologin = function(req, res) {
-    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb, user_id, nickname) {
+    db.verifyLogin(req.param('email'), encryption.md5(req.param('password')), function(cb, user_id, username) {
       var status;
       status = cb;
       if (status) {
         req.session.user_id = user_id;
-        req.session.username = nickname;
+        req.session.username = username;
         return res.redirect('/upload');
       }
     });
