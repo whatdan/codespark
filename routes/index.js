@@ -86,18 +86,10 @@
     return res.render("write");
   };
 
-  exports.codeku = function(req, res) {
-    return res.render("codeku");
+  exports.place = function(req, res) {
+    return res.render("place");
   };
-
-  exports.list = function(req, res) {
-    return res.render("list");
-  };
-
-  exports.discuss = function(req, res) {};
 
   exports.review = function(req, res) {};
-
-  exports.rule = function(req, res) {};
 
 }).call(this);

@@ -68,21 +68,18 @@ exports.i = (req,res) ->
 exports.write = (req,res) ->
 	res.render("write");
 
-#代码市场
-exports.codeku = (req,res) ->
-	res.render("codeku");
-
-#榜单
-exports.list = (req,res) ->
-	res.render("list");
-
-#讨论
-exports.discuss = (req,res) ->
-	;
+#代码市场,活跃度
+exports.place = (req,res) ->
+	res.render("place");
 
 #评论
 exports.review = (req,res) ->
 	;
-#积分规则
-exports.rule = (req,res) ->
-	;
+
+# #讨论
+# exports.discuss = (req,res) ->
+# 	;
+
+# #积分规则
+# exports.rule = (req,res) ->
+# 	;
