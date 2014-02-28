@@ -3,16 +3,4 @@
 *.bak
 rserver.*
 *.js
-!bootstrap.min.js
-!jquery-1.10.2.min.js
-!jquery.snippet.min.js
-!require.js
-!underscore-min.js
 *.css
-!bootstrap-theme.min.css
-!bootstrap.min.css
-!cover.css
-!dashboard.css
-!extra.css
-!jquery.snippet.min.css
-!jumbotron.css
