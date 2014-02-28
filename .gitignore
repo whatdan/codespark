@@ -4,3 +4,4 @@
 rserver.*
 *.js
 *.css
+!Gruntfile.js

@@ -24,13 +24,10 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the task.
-  grunt.loadNpmTasks('grunt-contrib-coffee');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+// Load the plugin that provides the task.
+grunt.loadNpmTasks('grunt-contrib-coffee');
+grunt.loadNpmTasks('grunt-contrib-watch');
 
-
-  // Default task(s).
-  //grunt.registerTask('default', ['uglify','imagemin']);
 grunt.registerTask('default', ['coffee:compile']);
 grunt.registerTask('watchfile', ['watch']);
 
