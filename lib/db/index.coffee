@@ -1,4 +1,4 @@
-mongoClient = require("./mongoClient.js").mongoClient;
+mongoClient = require("../mongo").mongoClient;
 
 exports.insert = (obj) -> 
 	mongoClient (err,db)->

@@ -1,7 +1,7 @@
 express = require "express";
 path = require "path";
 routes = require "./routes";
-auth = require './lib/auth/'
+auth = require './lib/auth'
 app = express();
 
 #configures

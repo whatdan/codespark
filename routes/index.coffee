@@ -1,6 +1,6 @@
 fs = require 'fs';
-encryption = require '../lib/encryption.js'
-db = require '../db/db.js';
+encryption = require '../lib/encryption'
+db = require '../lib/db';
 
 #页面相关
 exports.index = (req,res) ->
