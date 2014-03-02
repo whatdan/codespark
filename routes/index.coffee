@@ -4,7 +4,7 @@ db = require '../lib/db';
 
 #页面相关
 exports.index = (req,res) ->
-	res.render 'index';
+	res.sendfile 'index.html';
 
 #文件上传相关
 exports.upload = (req,res) ->
@@ -48,7 +48,7 @@ exports.doregister = (req,res) ->
 
 #登录相关
 exports.login = (req,res) ->
-	res.render "login";
+	res.sendfile 'login.html';
 	return;
 exports.dologin = (req,res) ->
 	db.verifyLogin req.param('email'),encryption.md5(req.param('password')),(cb,user_id,username)->
