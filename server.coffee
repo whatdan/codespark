@@ -1,7 +1,7 @@
 express = require "express";
 path = require "path";
 routes = require "./routes";
-auth = require './lib/auth.js'
+auth = require './lib/auth/'
 app = express();
 
 #configures
@@ -10,7 +10,7 @@ app.configure ->
 	app.locals.pretty = true;
 	app.set "port",process.env.PORT || 18080;
 	app.set 'views',__dirname+'/views'
-	app.use express.static(path.join __dirname,'/public');
+	app.use express.static(path.join __dirname,'/app');
 	app.set 'view engine','jade';
 	app.use express.favicon();
 	app.use express.logger('dev');
@@ -40,9 +40,6 @@ app.post '/dologin',routes.dologin;
 app.get '/i',routes.i;
 app.get '/write',routes.write;
 app.get '/place',routes.place;
-
-
-
 
 
 app.listen 18080;
