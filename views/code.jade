@@ -1,0 +1,23 @@
+extends layout
+block prepend content
+	div(class="full-width")
+		div(class="col-md-2")
+		div(class="col-md-8")
+			pre.javascript.margin_t20
+				=content
+			h2 评论
+			hr
+			div#review
+				blockquote
+					p hulk，前端工程师.
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+				blockquote
+					p hulk，前端工程师.
+					form(role='form',name="lreviewform",method="post",enctype="multipart/form-data",action="/review")
+						p
+						textarea.form-control(rows="3",placeholder="仅支持markdown语法.")
+						p
+						button.btn.btn-default.col-sm-offset-10(type="submit") Submit
+
+
