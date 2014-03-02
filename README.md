@@ -1,11 +1,12 @@
-## codeSpark ## [![Build Status](https://travis-ci.org/devqin/codespark.png)](https://travis-ci.org/devqin/codespark)
+## codeSpark ## 
+
+[![Build Status](https://travis-ci.org/devqin/codespark.png)](https://travis-ci.org/devqin/codespark)
 
 一个具有code review功能的web项目.
 使用或者将会使用的技术包括：
 > 
 - 构建工具:yeoman
 - node.js开发框架:Express
-- Node 模板引擎:jade
 - css预处理器:less
 - Javascript 预处理器:coffee
 - Javascript MVW 开发框架: AngularJS
