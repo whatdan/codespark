@@ -1,4 +1,4 @@
-## codeSpark ## 
+##codeSpark##
 
 [![Build Status](https://travis-ci.org/devqin/codespark.png)](https://travis-ci.org/devqin/codespark)
 
