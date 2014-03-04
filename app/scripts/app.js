@@ -11,6 +11,10 @@ angular.module('codesparkApp',['ngRoute'])
           templateUrl: 'views/register.html',
           controller: 'regCtrl'
       })
+      .when('/', {
+          templateUrl: 'views/index.html',
+          controller: 'indexCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
