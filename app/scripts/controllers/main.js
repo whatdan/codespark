@@ -1,9 +1,13 @@
-// 'use strict';
+'use strict';
 
-// angular.module('codesparkApp',['ngRoute'])
-// .controller('loginCtrl',function($scope) {
+angular.module('codesparkApp.controllers',[])
 
-// })
-// .controller('regCtrl',function($scope) {
+.controller('loginCtrl',function($scope) {
 
-// });
+})
+.controller('regCtrl',function($scope) {
+
+})
+.controller('indexCtrl',function($scope) {
+
+})
