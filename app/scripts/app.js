@@ -15,7 +15,7 @@ angular.module('codesparkApp',['ngRoute','codesparkApp.controllers'])
 		templateUrl: 'views/register.html',
 		controller: 'regCtrl'
 	})
-	.otherwise({
-		redirectTo: '/'
-	});
+	// .otherwise({
+	// 	redirectTo: '/'
+	// });
 }]);

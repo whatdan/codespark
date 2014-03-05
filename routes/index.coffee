@@ -4,12 +4,12 @@ db = require '../lib/db';
 
 #页面相关
 exports.index = (req,res) ->
-	res.sendfile 'index.html';
+	res.sendfile 'app/views/index.html';
 
 #文件上传相关
 exports.upload = (req,res) ->
 	if req.session.username
-		res.render 'upload'
+		res.sendfile 'app/views/upload.html'
 	else
 		res.redirect '/login'
 
@@ -28,14 +28,14 @@ exports.code = (req,res) ->
 		uuid = cb;
 		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
 			throw err if err;
-			res.render "code",
+			res.sendfile 'app/views/code.html'
 			content : data
 			return;
 		return;
 
 #注册相关
 exports.register = (req,res) ->
-		res.render "register" ;
+		res.sendfile 'app/views/register.html'
 		return;
 
 exports.doregister = (req,res) ->
@@ -48,7 +48,7 @@ exports.doregister = (req,res) ->
 
 #登录相关
 exports.login = (req,res) ->
-	res.sendfile 'login.html';
+	res.sendfile 'app/views/login.html';
 	return;
 exports.dologin = (req,res) ->
 	db.verifyLogin req.param('email'),encryption.md5(req.param('password')),(cb,user_id,username)->
