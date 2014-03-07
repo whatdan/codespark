@@ -30,16 +30,16 @@ app.configure 'development',->
 app.get '/',routes.index;
 app.get '/upload',auth.authorize,routes.upload;
 app.post '/file_upload',auth.authorize,routes.file_upload;
-# app.get '/code/:username/:code',routes.code;
+app.get '/code/:username/:code',routes.code;
 app.get '/login',routes.login;
-# app.get '/logout',routes.logout;
-# app.get '/register',routes.register;
-# app.post '/doregister',routes.doregister;
+app.get '/logout',routes.logout;
+app.get '/register',routes.register;
+app.post '/doregister',routes.doregister;
 app.post '/dologin',routes.dologin;
 app.get '/show',routes.showFiles;
-# app.get '/i',routes.i;
-# app.get '/write',routes.write;
-# app.get '/place',routes.place;
+app.get '/i',routes.i;
+app.get '/write',routes.write;
+app.get '/place',routes.place;
 
 
 app.listen 18080;
