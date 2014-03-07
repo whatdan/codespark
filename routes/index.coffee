@@ -14,24 +14,22 @@ exports.upload = (req,res) ->
 		res.redirect '/login'
 
 exports.file_upload = (req,res)->
-	files = req.files;
-	fs.mkdir "uploads\\"+req.session.user_id, ->
-		fs.rename files.file.path,'uploads\\'+req.session.user_id+'\\'+files.file.name,->
-			res.redirect('/upload');
-			;
-		return;
-	return;
+	db.saveFiles(req,res)
+
+exports.showFiles = (req,res)->
+	db.showFiles(req,res)
+
 
 #读代码相关
-exports.code = (req,res) ->
-	db.getUserId req.params.username,(cb)->
-		uuid = cb;
-		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
-			throw err if err;
-			res.sendfile 'app/views/code.html'
-			content : data
-			return;
-		return;
+# exports.code = (req,res) ->
+# 	db.getUserId req.params.username,(cb)->
+# 		uuid = cb;
+# 		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
+# 			throw err if err;
+# 			res.sendfile 'app/views/code.html'
+# 			content : data
+# 			return;
+# 		return;
 
 #注册相关
 exports.register = (req,res) ->
@@ -58,23 +56,23 @@ exports.dologin = (req,res) ->
 			req.session.username = username;
 			res.redirect('/upload')
 	return;
-exports.logout = (req,res) ->
-		req.session = null;
-		res.redirect("/");
+# exports.logout = (req,res) ->
+# 		req.session = null;
+# 		res.redirect("/");
 
-#个人页面相关
-exports.i = (req,res) ->
-	res.render("i");
-exports.write = (req,res) ->
-	res.render("write");
+# #个人页面相关
+# exports.i = (req,res) ->
+# 	res.sendfile 'app/views/i.html'
+# exports.write = (req,res) ->
+# 	res.sendfile 'app/views/write.html'
 
-#代码市场,活跃度
-exports.place = (req,res) ->
-	res.render("place");
+# #代码市场,活跃度
+# exports.place = (req,res) ->
+# 	res.sendfile 'app/views/place.html'
 
-#评论
-exports.review = (req,res) ->
-	;
+# #评论
+# exports.review = (req,res) ->
+# 	;
 
 # #讨论
 # exports.discuss = (req,res) ->
