@@ -21,15 +21,15 @@ exports.showFiles = (req,res)->
 
 
 #读代码相关
-# exports.code = (req,res) ->
-# 	db.getUserId req.params.username,(cb)->
-# 		uuid = cb;
-# 		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
-# 			throw err if err;
-# 			res.sendfile 'app/views/code.html'
-# 			content : data
-# 			return;
-# 		return;
+exports.code = (req,res) ->
+	db.getUserId req.params.username,(cb)->
+		uuid = cb;
+		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
+			throw err if err;
+			res.sendfile 'app/views/code.html'
+			content : data
+			return;
+		return;
 
 #注册相关
 exports.register = (req,res) ->
@@ -56,28 +56,28 @@ exports.dologin = (req,res) ->
 			req.session.username = username;
 			res.redirect('/upload')
 	return;
-# exports.logout = (req,res) ->
-# 		req.session = null;
-# 		res.redirect("/");
+exports.logout = (req,res) ->
+		req.session = null;
+		res.redirect("/");
 
-# #个人页面相关
-# exports.i = (req,res) ->
-# 	res.sendfile 'app/views/i.html'
-# exports.write = (req,res) ->
-# 	res.sendfile 'app/views/write.html'
+#个人页面相关
+exports.i = (req,res) ->
+	res.sendfile 'app/views/i.html'
+exports.write = (req,res) ->
+	res.sendfile 'app/views/write.html'
 
-# #代码市场,活跃度
-# exports.place = (req,res) ->
-# 	res.sendfile 'app/views/place.html'
+#代码市场,活跃度
+exports.place = (req,res) ->
+	res.sendfile 'app/views/place.html'
 
-# #评论
-# exports.review = (req,res) ->
-# 	;
+#评论
+exports.review = (req,res) ->
+	;
 
-# #讨论
-# exports.discuss = (req,res) ->
-# 	;
+#讨论
+exports.discuss = (req,res) ->
+	;
 
-# #积分规则
-# exports.rule = (req,res) ->
-# 	;
+#积分规则
+exports.rule = (req,res) ->
+	;
