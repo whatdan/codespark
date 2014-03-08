@@ -16,24 +16,16 @@ exports.upload = (req,res) ->
 exports.file_upload = (req,res)->
 	db.saveFiles(req,res)
 
-exports.showFiles = (req,res)->
-	db.showFiles(req,res)
-
 #读代码相关
 exports.code = (req,res) ->
 	db.getUserId req.params.username,(cb)->
-		uuid = cb;
-		fs.readFile 'uploads\\'+uuid+"\\"+req.params.code,"utf8",(err, data)->
-			throw err if err;
-			res.sendfile 'app/views/code.html'
-			content : data
-			return;
-		return;
+		# console.log req.params.username+"/"+cb
+		db.showCode(req,res,cb)
+
 
 #注册相关
 exports.register = (req,res) ->
 		res.sendfile 'app/views/register.html'
-		return;
 
 exports.doregister = (req,res) ->
 	db.insert 
@@ -41,12 +33,11 @@ exports.doregister = (req,res) ->
 		username : req.param('username'),
 		password : encryption.md5(req.param('password'))
 	res.redirect('/upload')
-	return;
 
 #登录相关
 exports.login = (req,res) ->
 	res.sendfile 'app/views/login.html';
-	return;
+
 exports.dologin = (req,res) ->
 	db.verifyLogin req.param('email'),encryption.md5(req.param('password')),(cb,user_id,username)->
 		status = cb;
@@ -54,7 +45,7 @@ exports.dologin = (req,res) ->
 			req.session.user_id = user_id;
 			req.session.username = username;
 			res.redirect('/upload')
-	return;
+
 exports.logout = (req,res) ->
 		req.session = null;
 		res.redirect("/");
