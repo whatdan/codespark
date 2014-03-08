@@ -19,7 +19,6 @@ exports.file_upload = (req,res)->
 exports.showFiles = (req,res)->
 	db.showFiles(req,res)
 
-
 #读代码相关
 exports.code = (req,res) ->
 	db.getUserId req.params.username,(cb)->
