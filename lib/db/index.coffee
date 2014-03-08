@@ -18,9 +18,7 @@ exports.verifyLogin = (email,ps,callback) ->
 			(err,result) ->
 				callback result.email == email and ps == result.password,result._id.toString(),result.username;
 				db.close();
-				return;
-		return;
-	return ;
+
 exports.getUserId = (username,cb)->
 	mongoClient (err,db) ->
 		throw err if err;
@@ -29,9 +27,7 @@ exports.getUserId = (username,cb)->
 			(err,result) ->
 				cb result._id.toString()
 				db.close();
-				return;
-		return;
-	return;
+
 exports.saveFiles = (req,res) ->
 	mongoClient (err,db) ->
 		throw err if err
@@ -46,15 +42,26 @@ exports.saveFiles = (req,res) ->
 						db.close()
 						res.redirect '/upload'
 
-exports.showFiles = (req,res) ->
+# exports.showCode = (req,res,uuid) ->
+# 	mongoClient (err,db) ->
+# 		throw err if err
+# 		console.log '/'+uuid+"/"+req.params.code
+# 		db.collection('fs.files').findOne
+# 			"filename":'/'+uuid+"/"+req.params.code
+# 			(err,result) ->
+# 				db.close();
+# 				res.sendfile result.filename
+
+#in the fe,use angularjs to load a new file in filestring.
+exports.showCode = (req,res,uuid) ->
 	mongoClient (err,db) ->
 		throw err if err
-		db.collection('fs.files').findOne
-			"md5":'a9b49214b6495c78237c75501671087f'
-			(err,result) ->
-				console.log result;
-				db.close();
-				res.sendfile result.filename
+		gridStore = new GridStore db, "/"+uuid+"/"+req.params.code, "r" 
+		gridStore.open  (err, gridStore)->
+			gridStore.seek 0, ->
+				gridStore.read (err, data) ->
+					filestring = data.toString();
+					db.close();
 
 
 # exports.saveFiles = (req,res) ->
