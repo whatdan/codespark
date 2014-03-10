@@ -5,7 +5,6 @@ var ld = setTimeout(function(){
 		$("pre.code").snippet("javascript",{style:"random",showNum:true});
 		clearTimeout(ld);
 	}
-	
-},100)
+},100);
 
 }(jQuery))
