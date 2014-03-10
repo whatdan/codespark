@@ -1,7 +1,5 @@
 ##codeSpark##
 
-[![Build Status](https://travis-ci.org/devqin/codespark.png)](https://travis-ci.org/devqin/codespark)
-
 一个具有code review功能的web项目.
 使用或者将会使用的技术包括：
 > 
