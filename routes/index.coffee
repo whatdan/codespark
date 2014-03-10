@@ -18,11 +18,10 @@ exports.file_upload = (req,res)->
 
 #读代码相关
 exports.code = (req,res) ->
-		res.sendfile 'app/views/code.html'
+		res.sendfile 'app/views/code.html';
 #读代码相关
 exports.returncode = (req,res) ->
 	db.getUserId req.params.username,(cb)->
-		console.log req.params.username+"/"+cb
 		db.showCode(req,res,cb)
 
 #注册相关

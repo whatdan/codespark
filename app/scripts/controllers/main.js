@@ -4,7 +4,7 @@ angular.module('codesparkApp.controllers',[])
 
 .controller('loadCode',function($scope,$http) {
 
-	 $http({method: 'GET', url: '/code/devqin/server.coffee'}).
+	 $http({method: 'GET', url: "/pull"+document.location.pathname }).
     success(function(data, status, headers, config) {
 	$scope.view = data;
     }).
