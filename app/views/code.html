@@ -17,6 +17,7 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="/styles/jumbotron.css">
+    <link rel="stylesheet" type="text/css" href="/styles/jquery.snippet.min.css" />
     <!-- endbuild -->
   </head>
   <body ng-app="codesparkApp">
@@ -49,7 +50,7 @@
     <div class="full-width">
       <div class="col-md-2"></div>
       <div class="col-md-8" ng-controller="loadCode">
-        <pre class="javascript margin_t20"  >{{view}}</pre>
+        <pre class="code margin_t20"  >{{view}}</pre>
 
         <h2>评论</h2>
         <hr>
@@ -99,6 +100,9 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="/scripts/app.js"></script>
         <script src="/scripts/controllers/main.js"></script>
+        <script src="/scripts/jquery.snippet.min.js"></script>
+        <script src="/scripts/render.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>
