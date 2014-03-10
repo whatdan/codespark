@@ -1,13 +1,16 @@
-// 'use strict';
+'use strict';
 
-// angular.module('codesparkApp.controllers',[])
+angular.module('codesparkApp.controllers',[])
 
-// .controller('loginCtrl',function($scope) {
+.controller('loadCode',function($scope,$http) {
 
-// })
-// .controller('regCtrl',function($scope) {
+	 $http({method: 'GET', url: '/code/devqin/server.coffee'}).
+    success(function(data, status, headers, config) {
+	$scope.view = data;
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
 
-// })
-// .controller('indexCtrl',function($scope) {
-
-// })
+})

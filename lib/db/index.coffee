@@ -60,8 +60,9 @@ exports.showCode = (req,res,uuid) ->
 		gridStore.open  (err, gridStore)->
 			gridStore.seek 0, ->
 				gridStore.read (err, data) ->
-					filestring = data.toString();
 					db.close();
+					# filestring = data.toString();
+					res.send data.toString();
 
 
 # exports.saveFiles = (req,res) ->

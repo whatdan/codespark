@@ -1,6 +1,6 @@
 // 'use strict';
 
-// angular.module('codesparkApp',['ngRoute','codesparkApp.controllers'])
+angular.module('codesparkApp',['ngRoute','codesparkApp.controllers'])
 // .config(['$routeProvider',function ($routeProvider) {
 // 	$routeProvider
 // 	.when('/', {

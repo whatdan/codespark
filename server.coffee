@@ -27,7 +27,8 @@ app.configure 'development',->
 app.get '/',routes.index;
 app.get '/upload',auth.authorize,routes.upload;
 app.post '/file_upload',auth.authorize,routes.file_upload;
-app.get '/code/:username/:code',routes.code;
+app.get '/code',routes.code;
+app.get '/code/:username/:code',routes.returncode;
 app.get '/login',routes.login;
 app.get '/logout',routes.logout;
 app.get '/register',routes.register;
